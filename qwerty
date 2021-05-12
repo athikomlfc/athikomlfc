@@ -1,0 +1,483 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="iamstyle.css">
+    <title>MurderTown</title>
+</head>
+<body class="max-w-lg m-auto bg-gray-100 " >
+<!-- firstpage -->
+<div class="bg-white w-auto border rounded p-3 shadow hidden" id="firstpage">
+  <div class="grid">
+    <img src="./img/logo.png" class="w-14 m-auto">
+    <div class="m-auto text-xl">MURDERTOWN</div>
+    <!-- loginform -->
+    <form class="justify-center border-t mt-2" id="loginform">
+      <div class="text-center mt-3 mb-2">User Login</div>
+      <div class="grid">
+        <input type="email" placeholder=" EMAIL" name="email" class="bg-gray-100 rounded-xl p-1.5 mb-2">
+        <input type="password" placeholder=" PASSWORD" name="password" class="bg-gray-100 rounded-xl p-1.5 ">
+      </div>
+      <div class="flex justify-center">
+        <button class="bg-yellow-200 mt-2 border p-1 rounded-full w-20 hover:bg-yellow-400">LOGIN</button>
+        <button class="bg-yellow-200 mt-2 ml-2 border p-1 rounded-full w-24 hover:bg-yellow-400" id="registerfirstpage">สมัครสมาชิก</button>
+      </div>
+    </form>
+    <!-- registerform -->
+    <form class="justify-center border-t mt-2 hidden" id="registerform">
+      <div class="text-center mt-3 mb-2">Register</div>
+      <div class="grid">
+        <input type="text" placeholder=" ชื่อตัวละครของคุณ" name="userprofile" class="bg-gray-100 rounded-xl p-1.5 mb-2">
+        <input type="email" placeholder=" EMAIL" name="email" class="bg-gray-100 rounded-xl p-1.5 mb-2">
+        <input type="password" placeholder=" PASSWORD" name="password" class="bg-gray-100 rounded-xl p-1.5 mb-2">
+      </div>
+      <div class="flex justify-center">
+        <button class="bg-yellow-200 mt-2 border p-1 rounded-full w-24 hover:bg-yellow-400">REGISTER</button>
+        <button class="bg-yellow-200 mt-2 ml-2 border p-1 rounded-full w-24  hover:bg-yellow-400" id="backtologin">มีไอดีแล้ว</button>
+      </div>
+    </form>
+  </div>
+</div>
+<div>
+  <img src="./img/intro.jpg" class="rounded-sm shadow hidden" id="intropicture">
+</div>
+
+
+
+<div class="hidden" id="app">
+  <!-- navbar infouser -->
+<div class="bg-white w-auto border rounded p-3 pt-1 pb-1 shadow " id="infouser">
+  <div>
+    <span class="bg-gray-200 text-xs cursor-pointer p-0.5 rounded-sm hover:bg-yellow-300 hidden" id="buyinsurance">ซื้อประกัน</span>
+    <span class="bg-yellow-300 text-xs p-0.5 rounded-sm hidden" id="haveinsurance">คุณมีประกันแล้ว</span>
+  </div>
+  <div class="flex inline">
+      <div class="font-bold pr-2 uppercase" id="userdisplay"></div>
+      <img src="./img/resource/icon_cash_512px.png" class="w-6 h-6">
+      <div class="pl-1 ">CASH: <span id="usercash"></span></div>
+      <div class="cursor-pointer ml-2 hover:text-blue-400" id="signout">(logout)</div>
+  </div>
+  <div class="text-xs">ทรัพยากรของคุณ</div>
+  <div class="flex items-center border-b pb-1">
+      <img src="./img/resource/icon_coin_512px.png" alt="เหรียญ" class="w-5 h-4 pr-1">
+      <div class="text-xs pr-1">: <span id="usercoin"></span><span class="text-green-400 hidden" id="animatecoinplus">(+)</span></div>
+      <img src="./img/resource/icon_meat_512px.png" class="w-5 h-4 pr-1">
+      <div class="text-xs pr-1">: <span id="usermeat"></span><span class="text-green-400 hidden" id="animatemeatplus">(+)</span></div>
+      <img src="./img/resource/icon_wood_512px.png" class="w-5 h-4 pr-1">
+      <div class="text-xs pr-1">: <span id="userwood"></span><span class="text-green-400 hidden" id="animatewoodplus">(+)</span></div>
+      <img src="./img/resource/icon_iron_512px.png" class="w-5 h-4 pr-1">
+      <div class="text-xs pr-1">: <span id="useriron"></span><span class="text-green-400 hidden" id="animateironplus">(+)</span></div>
+      <img src="./img/resource/icon_gold_512px.png" class="w-5 h-4 pr-1">
+      <div class="text-xs pr-1">: <span id="usergold"></span><span class="text-green-400 hidden" id="animategoldplus">(+)</span></div>
+  </div>
+  <div class="text-xs">ความสามารถของคุณ</div>
+  <div class="flex items-center border-b pb-1">
+    <img src="./img/items/apple_512px.png" class="w-5 h-4 pr-1">
+    <div class="text-xs pr-1">ระดับ: <span id="usertrade"></span></div>
+    <img src="./img/items/bow_512px.png" class="w-5 h-4 pr-1">
+    <div class="text-xs pr-1">ระดับ: <span id="userhunt"></span></div>
+    <img src="./img/items/axe_512px.png" class="w-5 h-4 pr-1">
+    <div class="text-xs pr-1">ระดับ: <span id="usercuttree"></span></div>
+    <img src="./img/items/pickaxe_512px.png" class="w-5 h-4 pr-1">
+    <div class="text-xs pr-1">ระดับ: <span id="userdig"></span></div>
+</div>
+<div class="text-xs items-center">คุณมีพลังงาน<span class="text-sm text-yellow-500 font-bold ml-1 mr-1" id="userenergy"></span><span class="text-red-400 hidden" id="animateenergy"> (-)</span>พลังงาน</div>
+</div>
+<div class="grid bg-white w-auto border rounded p-3 shadow hidden" id="insurance">
+  <span class="text-center text-sm">สิ่งที่คุณจะได้รับเมื่อคุณซื้อประกัน</span>
+  <span class="text-center text-xs">1.เมื่อตัวละครของคุณตายความสามารถของคุณจะไม่ลด</span>
+  <span class="text-center text-xs">2.ป้ายสีทองบนชื่อของคุณเขียนว่าคุณซื้อประกันแล้ว</span>
+  <span class="text-center text-xs">3.ประกันไม่มีวันหมดอายุจนกว่าตัวละครของคุณจะตาย</span>
+
+  <div class="flex justify-center items-center mt-1">
+    <div class="flex items-center bg-yellow-200 text-xs p-1 border rounded mr-2 cursor-pointer hover:bg-yellow-300" id="buybuyinsurance">
+      <span>ซื้อ 10 CASH</span>
+      <span><img src="./img/resource/icon_cash_512px.png" class="ml-1 w-5 h-4"></span>
+    </div>
+    <div class="flex items-center bg-red-300 text-xs p-1 border rounded mr-2 cursor-pointer hover:bg-red-400" id="cancelbuyinsurance">ไม่ต้องการซื้อ</div>
+  </div>
+</div>
+<div class="flex justify-center items-center bg-white w-auto border rounded p-3 shadow hidden" id="insuranceloading">
+  <div><img src="./img/logo.png" class="w-10 h-10 animate-spin"></div>
+  <span>LOADING ....</span>
+</div>
+<!-- MENU -->
+<div class="flex justify-center mb-2" id="allmenu">
+<div class="bg-white w-auto border rounded p-1 mt-1 mr-2 shadow-sm hover:bg-yellow-300 cursor-pointer text-sm" id="characterbutton">ตัวละคร</div>
+<div class="bg-white w-auto border rounded p-1 mt-1 mr-2 shadow-sm hover:bg-red-500 cursor-pointer text-sm" id="killingbutton">สังหาร</div>
+<div class="bg-white w-auto border rounded p-1 mt-1 mr-2 shadow-sm hover:bg-yellow-300 cursor-pointer text-sm" id="blacksmithbutton">ความสามารถ</div>
+<div class="bg-white w-auto border rounded p-1 mt-1 mr-2 shadow-sm hover:bg-yellow-300 cursor-pointer text-sm" id="chatbutton">แชท</div>
+<div class="bg-white w-auto border rounded p-1 mt-1 mr-2 shadow-sm hover:bg-yellow-300 cursor-pointer text-sm" id="prizebutton">รางวัล</div>
+<div class="bg-white w-auto border rounded p-1 mt-1 mr-2 shadow-sm hover:bg-yellow-300 cursor-pointer text-sm" id="rankingbutton">LOG</div>
+</div>
+<div class="bg-yellow-300 mt-1 w-auto border rounded  pb-1 shadow-sm text-xs text-center"></div>
+<!-- WORK -->
+<div class="mt-2" id="charactermenu">
+<!-- work gif -->
+<div class="flex" id="idlegif">
+    <span class="m-auto"><img src="./img/final/06 idle-day2.gif" class="rounded-t-lg"></span>
+</div>
+<div class="flex hidden" id="huntgif">
+  <span class="m-auto"><img src="./img/final/08-hunting-day.gif" class="rounded-t-lg"></span>
+</div>
+<div class="flex hidden" id="cutgif">
+  <span class="m-auto"><img src="./img/final/07 cutting tree-day.gif" class="rounded-t-lg"></span>
+</div>
+<div class="flex hidden" id="mininggif">
+  <span class="m-auto"><img src="./img/final/03-mining-day.gif" class="rounded-t-lg"></span>
+</div>
+<div class="flex hidden" id="tradegif">
+  <span class="m-auto"><img src="./img/final/02-packing-day.gif" class="rounded-t-lg"></span>
+</div>
+<div class="flex hidden" id="sleepgif">
+  <span class="m-auto"><img src="./img/final/01 sleeping-night.gif" class="rounded-t-lg"></span>
+</div>
+
+
+<!-- WORKWROK -->
+<div class="bg-white w-auto border rounded p-2 pt-1 pb-1 shadow-sm text-xs text-center" >
+    <div>เลือกงานที่คุณต้องการทำ</div>
+</div>
+<div class="flex justify-center" id="workmenu">
+  <div class="flex bg-white w-auto border rounded p-1 mt-1 mr-2 shadow-sm hover:bg-yellow-300 cursor-pointer text-sm" id="tradebutton">
+    <span><img src="./img/items/apple_512px.png" class="w-6"></span>
+      <span>ส่งสินค้า</span>
+  </div>
+  <div class="flex bg-white w-auto border rounded p-1 mt-1 mr-2 shadow-sm hover:bg-yellow-300 cursor-pointer text-sm" id="huntbutton">
+    <span><img src="./img/items/bow_512px.png" class="w-6"></span>
+    <span>ล่าสัตว์</span>
+  </div>
+  <div class="flex bg-white w-auto border rounded p-1 mt-1 mr-2 shadow-sm hover:bg-yellow-300 cursor-pointer text-sm" id="cutbutton">
+     <span><img src="./img/items/axe_512px.png" class="w-6"></span>
+     <span>ตัดต้นไม้</span>
+  </div>
+  <div class="flex bg-white w-auto border rounded p-1 mt-1 mr-2 shadow-sm hover:bg-yellow-300 cursor-pointer text-sm" id="miningbutton">
+    <span><img src="./img/items/pickaxe_512px.png" class="w-6"></span>
+    <span>ขุดเหมือง</span>
+  </div>
+  
+</div>
+<!-- WORK ACTION -->
+
+<!-- presshunt action -->
+<div class="grid bg-white w-auto border rounded p-2 pt-1 pb-1 shadow-sm mt-1 text-center hidden" id="hunthunt">
+  <span class="underline text-xl">ทำงานล่าสัตว์(ใช้ 100 พลังงาน)</span>
+  <span id="userhuntskill">ความสามารถล่าสัตว์ของคุณระดับ 1</span>
+  <span id="usergetmeat">คุณจะได้รับเนื้อสัตว์ 5 อัน</span>
+  <span>ตัวละครของคุณมีโอกาสที่จะถูกสัตว์ป่าฆ่า 3% </span>
+  <div class="grid">
+    <button class="border p-1 bg-yellow-200 hover:bg-yellow-400 rounded" id="presshunt">ทำงานล่าสัตว์</button>
+    <button class="border p-1 bg-red-300 hover:bg-red-400 rounded" id="cancelhunt">ยกเลิกการทำงาน</button>
+  </div>
+</div>
+<!-- huntloading -->
+<div class="grid bg-white w-auto border rounded p-2 pt-1 pb-1 shadow-sm mt-1 text-center hidden" id="presshuntwait">
+<span class="m-auto"><img src="./img/items/bow_512px.png" class="w-6 animate-spin"></span>
+<span>กรุณารอซักครู่ตัวละครของคุณกำลังทำงาน</span>
+</div>
+
+<!-- presscutwood action -->
+<div class="grid bg-white w-auto border rounded p-2 pt-1 pb-1 shadow-sm mt-1 text-center hidden" id="cutcut">
+  <span class="underline text-xl">ทำงานตัดต้นไม้(ใช้ 100 พลังงาน)</span>
+  <span id="usercuttreeskill">อุปกรณ์ตัดต้นไม้ของคุณระดับ 1</span>
+  <span id="usergetwood">คุณจะได้รับไม้ 5 อัน</span>
+  <span>ตัวละครของคุณมีโอกาสที่จะถูกสัตว์ป่าฆ่า 3% </span>
+  <div class="grid">
+    <button class="border p-1 bg-yellow-200 hover:bg-yellow-400 rounded" id="presscut">ทำงานตัดต้นไม้</button>
+    <button class="border p-1 bg-red-300 hover:bg-red-400 rounded" id="cancelcut">ยกเลิกการทำงาน</button>
+  </div>
+</div>
+
+<div class="grid bg-white w-auto border rounded p-2 pt-1 pb-1 shadow-sm mt-1 text-center hidden" id="presscutwait">
+  <span class="m-auto"><img src="./img/items/axe_512px.png" class="w-6 animate-spin"></span>
+  <span>กรุณารอซักครู่ตัวละครของคุณกำลังทำงาน</span>
+</div>
+
+
+<!-- press-mining -->
+  <div class="grid bg-white w-auto border rounded p-2 pt-1 pb-1 shadow-sm mt-1 text-center hidden" id="mining">
+    <span class="underline text-xl">ทำงานขุดเหมือง(ใช้ 100 พลังงาน)</span>
+    <span id="userdigskill">อุปกรณ์ตัดต้นไม้ของคุณระดับ 1</span>
+    <span id="usergetiron">คุณจะได้รับเหล็ก เหล็ก 3 อัน</span>
+    <span id="usergetgold">คุณจะทอง 1 อัน</span>
+    <span>ตัวละครของคุณมีโอกาสที่จะถูกหินถล่ม 3% </span>
+    <div class="grid">
+      <button class="border p-1 bg-yellow-200 hover:bg-yellow-400 rounded" id="pressmining">ทำงานขุดเหมือง</button>
+      <button class="border p-1 bg-red-300 hover:bg-red-400 rounded" id="cancelmining">ยกเลิกการทำงาน</button>
+    </div>
+  </div>
+  
+  <div class="grid bg-white w-auto border rounded p-2 pt-1 pb-1 shadow-sm mt-1 text-center hidden" id="pressminingwait">
+    <span class="m-auto"><img src="./img/items/pickaxe_512px.png" class="w-6 animate-spin"></span>
+    <span>กรุณารอซักครู่ตัวละครของคุณกำลังทำงาน</span>
+  </div>
+  
+ <!-- press-trade -->
+  <div class="grid bg-white w-auto border rounded p-2 pt-1 pb-1 shadow-sm mt-1 text-center hidden" id="tradetrade">
+    <span class="underline text-xl">ทำงานส่งสินค้า(ใช้ 100 พลังงาน)</span>
+    <span id="usertradeskill">ความสามารถส่งสินค้าของคุณระดับ 1</span>
+    <div class="bg-gray-100 rounded">
+      <div class="flex justify-center mt-1"><img src="./img/items/apple_512px.png" class="w-10"></div>
+      <div>ทำงานส่งสินค้าถูกกฎหมาย</div>
+      <div id="usergetcoin">คุณจะได้รับเหรียญ 5 เหรียญ</div>
+      <div>ตัวละครของคุณมีโอกาสที่จะถูกโจรฆ่า 3%</div>
+      <div class="flex justify-center items-center rounded cursor-pointer border p-1 bg-yellow-200 hover:bg-yellow-400 " id="presstrade">
+        <span><img src="./img/items/apple_512px.png" class="w-5"></span>
+        <span>ทำงานส่งสินค้าถูกกฎหมาย</span>
+      </div>
+    </div>
+    <div class="bg-gray-100 rounded mt-1">
+      <div class="flex justify-center mt-1"><img src="./img/items/box_512px.png" class="w-10"></div>
+      <div>ทำงานส่งสินค้าของเถื่อน</div>
+      <div id="usergetcoinillegal">คุณจะได้รับเหรียญ 10 เหรียญ</div>
+      <div>ตัวละครของคุณมีโอกาสที่จะถูกโจรฆ่า 10%</div>
+      <div class="flex justify-center items-center rounded cursor-pointer border p-1 bg-red-400 hover:bg-red-500 " id="presstradeillegal" >
+        <span><img src="./img/items/box_512px.png" class="w-5"></span>
+        <span>ทำงานส่งสินค้าส่งเถื่อน</span>
+      </div>
+    </div>
+    <div class="grid mt-1">
+      <div class="border p-1 bg-red-300 cursor-pointer hover:bg-red-400 rounded" id="canceltrade">ยกเลิกการทำงาน</div>
+    </div>
+  </div>
+  <div class="grid bg-white w-auto border rounded p-2 pt-1 pb-1 shadow-sm mt-1 text-center hidden" id="presstradewait">
+    <span class="m-auto"><img src="./img/items/apple_512px.png" class="w-6 animate-spin"></span>
+    <span>กรุณารอซักครู่ตัวละครของคุณกำลังทำงาน</span>
+  </div>
+  <div class="bg-red-600 w-auto border rounded p-1 pt-1 pb-1 shadow-sm mt-1 text-center text-xs text-white hidden" id="lowenergy">พลังงานคุณน้อยเกินไป</div>
+</div>
+
+<!-- OTHER PLAYER -->
+<div class="hidden" id="killingmenu">
+  <div class="flex justify-center items-center bg-white mt-1 ">
+    <div>ความสามารถของคุณ</div>
+    <img src="./img/items/sword_512px.png" class="w-12 p-3 ">
+    <div class="pr-1">พลังโจมตี: <span id="userattack"></span></div>
+    <img src="./img/items/shield_512px.png" class="w-12 p-3">
+    <div class="pr-1">พลังป้องกัน: <span id="userdefend"></span></div>
+ </div>
+ <div class="text-red-600 text-center" id="errkill"></div>
+ <div class="grid hidden" id="killgif">
+  <span class="m-auto"><img src="./img/final/04 killing-night.gif" class="rounded-t-lg"></span>
+  <div class="bg-white w-auto border rounded shadow p-1 text-xs text-center">กรุณารอซักครู่คุณกำลังลอบสังหาร...</div>
+</div>
+ 
+
+  <div id="playerlist">
+    <!-- fetchdata -->
+  </div>
+</div>
+
+<!-- ช่างตีเหล็ก -->
+<div class="hidden" id="blacksmithmenu">
+  <div class="flex justify-between items-center bg-white w-auto border rounded p-1 mt-1 shadow">
+    <div class="flex items-center">
+      <div><img src="./img/items/apple_512px.png" class="w-7 h-7 mr-2"></div>
+      <div class="grid">
+        <span>ความสามารถส่งสินค้า</span>
+      </div>
+    </div>
+      <div class="flex">
+        <div class="bg-yellow-200 p-1 border rounded cursor-pointer mr-2 hover:bg-yellow-400" id="tradeinfo">รายละเอียด</div>
+        <div class="bg-yellow-200 p-1 border rounded cursor-pointer hover:bg-yellow-400" id="upgradetradebutton">อัพเกรด</div>
+        <div class="flex items-center bg-yellow-200 p-1 border rounded cursor-not-allowed hover:bg-yellow-400 hidden" id="waitupgradetrade">
+          <span><img src="./img/logo.png" class="w-5 animate-spin"></span>
+          <span>กำลังอัพเกรด...</span>
+        </div>
+      </div>
+  </div>
+  <div class="grid bg-white w-auto border-r border-b border-l rounded-sm p-1 shadow hidden" id="upgradetradeinfo">
+    <span class="text-sm">ความสามารถส่งสินค้า</span>
+    <span class="text-xs">ระดับ 1 คุณจะได้รับเหรียญ 5 อัน</span>
+    <span class="text-xs">ระดับ 2 คุณจะได้รับเหรียญ 6 อัน</span>
+    <span class="text-xs">ระดับ 3 คุณจะได้รับเหรียญ 7 อัน</span>
+    <span class="text-xs">ระดับ 4 คุณจะได้รับเหรียญ 8 อัน</span>
+    <span class="text-xs">ระดับ 5 คุณจะได้รับเหรียญ 9 อัน</span>
+    <span class="text-xs">ระดับ 6 คุณจะได้รับเหรียญ 10 อัน</span>
+    <span class="text-xs">ระดับ 8 คุณจะได้รับเหรียญ 11 อัน</span>
+    <span class="text-xs">ระดับ 8 คุณจะได้รับเหรียญ 12 อัน</span>
+    <span class="text-xs">ระดับ 9 คุณจะได้รับเหรียญ 13 อัน</span>
+    <span class="text-xs">ระดับ 10 คุณจะได้รับเหรียญ 14 อัน</span>
+    <span class="text-sm">ทรัพยยากรที่ต้องใช้อัพเกรด</span>
+    <span class="text-xs">ระดับ 2 คุณต้องใช้เนื้อ 5 อัน ไม้ 5 อัน เหล็ก 5 อัน ทอง 1 อัน</span>
+    <span class="text-xs">ระดับ 3 คุณต้องใช้เนื้อ 5 อัน ไม้ 5 อัน เหล็ก 5 อัน ทอง 1 อัน</span>
+    <span class="text-xs">ระดับ 4 คุณต้องใช้เนื้อ 10 อัน ไม้ 10 อัน เหล็ก 10 อัน ทอง 3 อัน</span>
+    <span class="text-xs">ระดับ 5 คุณต้องใช้เนื้อ 10 อัน ไม้ 10 อัน เหล็ก 10 อัน ทอง 3 อัน</span>
+    <span class="text-xs">ระดับ 6 คุณต้องใช้เนื้อ 10 อัน ไม้ 10 อัน เหล็ก 10 อัน ทอง 3 อัน</span>
+    <span class="text-xs">ระดับ 7 คุณต้องใช้เนื้อ 10 อัน ไม้ 10 อัน เหล็ก 10 อัน ทอง 3 อัน</span>
+    <span class="text-xs">ระดับ 8 คุณต้องใช้เนื้อ 20 อัน ไม้ 20 อัน เหล็ก 20 อัน ทอง 7 อัน</span>
+    <span class="text-xs">ระดับ 9 คุณต้องใช้เนื้อ 20 อัน ไม้ 20 อัน เหล็ก 20 อัน ทอง 7 อัน</span>
+    <span class="text-xs">ระดับ 10 คุณต้องใช้เนื้อ 20 อัน ไม้ 20 อัน เหล็ก 20 อัน ทอง 7 อัน</span>
+  </div>
+  <div class="flex justify-between items-center bg-white w-auto border rounded p-1 mt-1 shadow">
+    <div class="flex items-center">
+      <div><img src="./img/items/bow_512px.png" class="w-7 h-7 mr-2"></div>
+      <div class="grid">
+        <span>ความสามารถล่าสัตว์</span>
+      </div>
+    </div>
+      <div class="flex">
+        <div class="bg-yellow-200 p-1 border rounded cursor-pointer mr-2 hover:bg-yellow-400" id="huntinfo">รายละเอียด</div>
+        <div class="bg-yellow-200 p-1 border rounded cursor-pointer hover:bg-yellow-400" id="upgradehuntbutton">อัพเกรด</div>
+        <div class="flex items-center bg-yellow-200 p-1 border rounded cursor-not-allowed hover:bg-yellow-400 hidden" id="waitupgradehunt">
+          <span><img src="./img/logo.png" class="w-5 animate-spin"></span>
+          <span>กำลังอัพเกรด...</span>
+        </div>
+      </div>
+  </div>
+  <div class="grid bg-white w-auto border-r border-b border-l rounded-sm p-1 shadow hidden" id="upgradehuntinfo">
+    <span class="text-sm">ความสามารถล่าสัตว์</span>
+    <span class="text-xs">ระดับ 1 คุณจะได้รับเนื้อสัตว์ 5 อัน</span>
+    <span class="text-xs">ระดับ 2 คุณจะได้รับเนื้อสัตว์ 6 อัน</span>
+    <span class="text-xs">ระดับ 3 คุณจะได้รับเนื้อสัตว์ 7 อัน</span>
+    <span class="text-xs">ระดับ 4 คุณจะได้รับเนื้อสัตว์ 8 อัน</span>
+    <span class="text-xs">ระดับ 5 คุณจะได้รับเนื้อสัตว์ 9 อัน</span>
+    <span class="text-xs">ระดับ 6 คุณจะได้รับเนื้อสัตว์ 10 อัน</span>
+    <span class="text-xs">ระดับ 8 คุณจะได้รับเนื้อสัตว์ 11 อัน</span>
+    <span class="text-xs">ระดับ 8 คุณจะได้รับเนื้อสัตว์ 12 อัน</span>
+    <span class="text-xs">ระดับ 9 คุณจะได้รับเนื้อสัตว์ 13 อัน</span>
+    <span class="text-xs">ระดับ 10 คุณจะได้รับเนื้อสัตว์ 14 อัน</span>
+    <span class="text-sm">ทรัพยยากรที่ต้องใช้อัพเกรด</span>
+    <span class="text-xs">ระดับ 2 คุณต้องใช้เนื้อ 5 อัน ไม้ 5 อัน เหล็ก 5 อัน ทอง 1 อัน</span>
+    <span class="text-xs">ระดับ 3 คุณต้องใช้เนื้อ 5 อัน ไม้ 5 อัน เหล็ก 5 อัน ทอง 1 อัน</span>
+    <span class="text-xs">ระดับ 4 คุณต้องใช้เนื้อ 10 อัน ไม้ 10 อัน เหล็ก 10 อัน ทอง 3 อัน</span>
+    <span class="text-xs">ระดับ 5 คุณต้องใช้เนื้อ 10 อัน ไม้ 10 อัน เหล็ก 10 อัน ทอง 3 อัน</span>
+    <span class="text-xs">ระดับ 6 คุณต้องใช้เนื้อ 10 อัน ไม้ 10 อัน เหล็ก 10 อัน ทอง 3 อัน</span>
+    <span class="text-xs">ระดับ 7 คุณต้องใช้เนื้อ 10 อัน ไม้ 10 อัน เหล็ก 10 อัน ทอง 3 อัน</span>
+    <span class="text-xs">ระดับ 8 คุณต้องใช้เนื้อ 20 อัน ไม้ 20 อัน เหล็ก 20 อัน ทอง 7 อัน</span>
+    <span class="text-xs">ระดับ 9 คุณต้องใช้เนื้อ 20 อัน ไม้ 20 อัน เหล็ก 20 อัน ทอง 7 อัน</span>
+    <span class="text-xs">ระดับ 10 คุณต้องใช้เนื้อ 20 อัน ไม้ 20 อัน เหล็ก 20 อัน ทอง 7 อัน</span>
+  </div>
+  <div class="flex justify-between items-center bg-white w-auto border rounded p-1 mt-1 shadow">
+    <div class="flex items-center">
+      <div><img src="./img/items/axe_512px.png" class="w-7 h-7 mr-2"></div>
+      <div class="grid">
+        <span>ความสามารถตัดต้นไม้</span>
+      </div>
+    </div>
+      <div class="flex">
+        <div class="bg-yellow-200 p-1 border rounded cursor-pointer mr-2 hover:bg-yellow-400" id="cuttreeinfo">รายละเอียด</div>
+        <div class="bg-yellow-200 p-1 border rounded cursor-pointer hover:bg-yellow-400" id="upgradecuttreebutton">อัพเกรด</div>
+        <div class="flex items-center bg-yellow-200 p-1 border rounded cursor-not-allowed hover:bg-yellow-400 hidden" id="waitupgradecuttree">
+          <span><img src="./img/logo.png" class="w-5 animate-spin"></span>
+          <span>กำลังอัพเกรด...</span>
+        </div>
+      </div>
+  </div>
+  <div class="grid bg-white w-auto border-r border-b border-l rounded-sm p-1 shadow hidden" id="upgradecuttreeinfo">
+    <span class="text-sm">ระดับความสามารถขุดเหมือง</span>
+    <span class="text-xs">ระดับ 1 คุณจะได้รับไม้ 5 อัน</span>
+    <span class="text-xs">ระดับ 2 คุณจะได้รับไม้ 6 อัน</span>
+    <span class="text-xs">ระดับ 3 คุณจะได้รับไม้ 7 อัน</span>
+    <span class="text-xs">ระดับ 4 คุณจะได้รับไม้ 8 อัน</span>
+    <span class="text-xs">ระดับ 5 คุณจะได้รับไม้ 9 อัน</span>
+    <span class="text-xs">ระดับ 6 คุณจะได้รับไม้ 10 อัน</span>
+    <span class="text-xs">ระดับ 8 คุณจะได้รับไม้ 11 อัน</span>
+    <span class="text-xs">ระดับ 8 คุณจะได้รับไม้ 12 อัน</span>
+    <span class="text-xs">ระดับ 9 คุณจะได้รับไม้ 13 อัน</span>
+    <span class="text-xs">ระดับ 10 คุณจะได้รับไม้ 14 อัน</span>
+    <span class="text-sm">ทรัพยยากรที่ต้องใช้อัพเกรด</span>
+    <span class="text-xs">ระดับ 2 คุณต้องใช้เนื้อ 5 อัน ไม้ 5 อัน เหล็ก 5 อัน ทอง 1 อัน</span>
+    <span class="text-xs">ระดับ 3 คุณต้องใช้เนื้อ 5 อัน ไม้ 5 อัน เหล็ก 5 อัน ทอง 1 อัน</span>
+    <span class="text-xs">ระดับ 4 คุณต้องใช้เนื้อ 10 อัน ไม้ 10 อัน เหล็ก 10 อัน ทอง 3 อัน</span>
+    <span class="text-xs">ระดับ 5 คุณต้องใช้เนื้อ 10 อัน ไม้ 10 อัน เหล็ก 10 อัน ทอง 3 อัน</span>
+    <span class="text-xs">ระดับ 6 คุณต้องใช้เนื้อ 10 อัน ไม้ 10 อัน เหล็ก 10 อัน ทอง 3 อัน</span>
+    <span class="text-xs">ระดับ 7 คุณต้องใช้เนื้อ 10 อัน ไม้ 10 อัน เหล็ก 10 อัน ทอง 3 อัน</span>
+    <span class="text-xs">ระดับ 8 คุณต้องใช้เนื้อ 20 อัน ไม้ 20 อัน เหล็ก 20 อัน ทอง 7 อัน</span>
+    <span class="text-xs">ระดับ 9 คุณต้องใช้เนื้อ 20 อัน ไม้ 20 อัน เหล็ก 20 อัน ทอง 7 อัน</span>
+    <span class="text-xs">ระดับ 10 คุณต้องใช้เนื้อ 20 อัน ไม้ 20 อัน เหล็ก 20 อัน ทอง 7 อัน</span>
+  </div>
+  <div class="flex justify-between items-center bg-white w-auto border rounded p-1 mt-1 shadow">
+    <div class="flex items-center">
+      <div><img src="./img/items/pickaxe_512px.png" class="w-7 h-7 mr-2"></div>
+      <div class="flex">
+        <div>ความสามารถขุดเหมือง</div>
+        <div><span id="userdig"></span></div>
+      </div>
+    </div>
+      <div class="flex">
+        <div class="bg-yellow-200 p-1 border rounded cursor-pointer mr-2 hover:bg-yellow-400" id="diginfo">รายละเอียด</div>
+        <div class="bg-yellow-200 p-1 border rounded cursor-pointer  hover:bg-yellow-400" id="upgradedigbutton">อัพเกรด</div>
+        <div class="flex items-center bg-yellow-200 p-1 border rounded cursor-not-allowed hover:bg-yellow-400 hidden" id="waitupgradedig">
+          <span><img src="./img/logo.png" class="w-5 animate-spin"></span>
+          <span>กำลังอัพเกรด...</span>
+        </div>
+      </div>
+  </div>
+  <div class="grid bg-white w-auto border-r border-b border-l rounded-sm p-1 shadow hidden" id="upgradediginfo">
+    <span class="text-sm">ระดับความสามารถขุดเหมือง</span>
+    <span class="text-xs">ระดับ 1 คุณจะได้รับเหล็ก 5 อัน กับ ทอง 1 อัน</span>
+    <span class="text-xs">ระดับ 2 คุณจะได้รับเหล็ก 6 อัน กับ ทอง 1 อัน</span>
+    <span class="text-xs">ระดับ 3 คุณจะได้รับเหล็ก 7 อัน กับ ทอง 1 อัน</span>
+    <span class="text-xs">ระดับ 4 คุณจะได้รับเหล็ก 8 อัน กับ ทอง 2 อัน</span>
+    <span class="text-xs">ระดับ 5 คุณจะได้รับเหล็ก 9 อัน กับ ทอง 2 อัน</span>
+    <span class="text-xs">ระดับ 6 คุณจะได้รับเหล็ก 10 อัน กับ ทอง 2 อัน</span>
+    <span class="text-xs">ระดับ 7 คุณจะได้รับเหล็ก 11 อัน กับ ทอง 2 อัน</span>
+    <span class="text-xs">ระดับ 8 คุณจะได้รับเหล็ก 12 อัน กับ ทอง 2 อัน</span>
+    <span class="text-xs">ระดับ 9 คุณจะได้รับเหล็ก 13 อัน กับ ทอง 3 อัน</span>
+    <span class="text-xs">ระดับ 10 คุณจะได้รับเหล็ก 14 อัน กับ ทอง 3 อัน</span>
+    <span class="text-sm">ทรัพยยากรที่ต้องใช้อัพเกรด</span>
+    <span class="text-xs">ระดับ 2 คุณต้องใช้เนื้อ 5 อัน ไม้ 5 อัน เหล็ก 5 อัน ทอง 1 อัน</span>
+    <span class="text-xs">ระดับ 3 คุณต้องใช้เนื้อ 5 อัน ไม้ 5 อัน เหล็ก 5 อัน ทอง 1 อัน</span>
+    <span class="text-xs">ระดับ 4 คุณต้องใช้เนื้อ 10 อัน ไม้ 10 อัน เหล็ก 10 อัน ทอง 3 อัน</span>
+    <span class="text-xs">ระดับ 5 คุณต้องใช้เนื้อ 10 อัน ไม้ 10 อัน เหล็ก 10 อัน ทอง 3 อัน</span>
+    <span class="text-xs">ระดับ 6 คุณต้องใช้เนื้อ 10 อัน ไม้ 10 อัน เหล็ก 10 อัน ทอง 3 อัน</span>
+    <span class="text-xs">ระดับ 7 คุณต้องใช้เนื้อ 10 อัน ไม้ 10 อัน เหล็ก 10 อัน ทอง 3 อัน</span>
+    <span class="text-xs">ระดับ 8 คุณต้องใช้เนื้อ 20 อัน ไม้ 20 อัน เหล็ก 20 อัน ทอง 7 อัน</span>
+    <span class="text-xs">ระดับ 9 คุณต้องใช้เนื้อ 20 อัน ไม้ 20 อัน เหล็ก 20 อัน ทอง 7 อัน</span>
+    <span class="text-xs">ระดับ 10 คุณต้องใช้เนื้อ 20 อัน ไม้ 20 อัน เหล็ก 20 อัน ทอง 7 อัน</span>
+  </div>
+  
+
+</div>
+<!-- DEAD -->
+<div class="bg-white border rounded p-32 mt-2 shadow hidden" style="background-image: url(./img/Untitled-1.jpg)" id="dead">
+  <div class="border p-3 bg-white bg-opacity-75">
+    <div class="text-center">ขณะนี้ตัวละครของคุณเสียชีวิต</div>
+  <div class="text-center">เมื่อคุณต้องการที่จะเริ่มใหม่ทรัพยากรจะกลับมาที่จุดเริ่มต้นรวมถึงความสามารถของคุณด้วย</div>
+  <div class="flex justify-center"><button class="p-1.5 border rounded bg-yellow-200 hover:bg-yellow-400" id="reborn">เกิดใหม่</button></div>
+  </div>
+</div>
+<!-- chat -->
+<div class="hidden" id="chatmenu">
+<div class="grid items-center bg-white w-auto border rounded p-1 mt-2 shadow">
+  <div class="p-1">ATHIKOM : สวัสดี</div>
+  <div class="p-1">ATHIKOM : สวัสดี</div>
+</div>
+</div>
+<!-- PRIZE -->
+<div class="hidden" id="prizemenu">
+<div class="grid bg-white w-auto border rounded p-2 mt-2 shadow">
+  <div class="m-auto mt-10">ผู้ที่มีเหรียญเยอะสุดในเกมคือ ATHIKOM</div>
+  <div class="m-auto mb-10">รางวัลที่จะได้คือเงินสุด 300฿ !!</div>
+</div>
+</div>
+<!-- ranking -->
+<div class="hidden" id="rankingmenu">
+<div class="grid items-center bg-white w-auto border rounded p-2 mt-2 shadow">
+  <div id="log"></div>
+</div>
+</div>
+
+<!-- footer -->
+<div class="mt-6 text-center text-xs">MURDERTOWN COPYRIGTH</div>
+</div>
+
+
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="/__/firebase/8.4.2/firebase-app.js"></script>
+<script src="/__/firebase/8.4.2/firebase-auth.js"></script>
+<script src="/__/firebase/8.4.2/firebase-firestore.js"></script>
+<script src="/__/firebase/8.4.2/firebase-functions.js"></script>
+
+<!-- Initialize Firebase -->
+<script src="/__/firebase/init.js"></script>
+
+<script src="./scripts/auth.js"></script>
+<script src="./scripts/app.js"></script>
+
+</div>
+</body>
+</html>
